@@ -22,7 +22,7 @@ bucket = os.environ.get('BUCKET')
 role_arn = os.environ.get('ROLE_ARN')
 user = os.environ.get('USER')
 password = os.environ.get('PASSWORD')
-#auth = (user,password)
+auth = (user,password)
 
 service = 'es'
 credentials = boto3.Session().get_credentials()
@@ -39,7 +39,7 @@ def lambda_handler(event, context):
     # Build the Elasticsearch client.
     es = Elasticsearch(
         hosts=[{'host': host, 'port': 443}],
-		http_auth=awsauth,
+		http_auth=auth,
         basic_auth=(user, password),
         use_ssl=True,
         verify_certs=True,
