@@ -39,7 +39,7 @@ def lambda_handler(event, context):
     # Build the Elasticsearch client.
     es = Elasticsearch(
         hosts=[{'host': host, 'port': 443}],
-        basic_auth=(user, password)
+        basic_auth=(user, password),
         use_ssl=True,
         verify_certs=True,
         connection_class=RequestsHttpConnection,
